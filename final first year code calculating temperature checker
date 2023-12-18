@@ -1,0 +1,56 @@
+import javax.swing.JOptionPane;
+
+public class TemperatureCalculatorchecker {
+
+    public static void main(String[] args) {
+        float roomTemperature = 16.0f;
+        double maxTemperature = 16.0;
+        int minutes = 0;
+
+        // Initial prompt
+        String userInput = JOptionPane.showInputDialog(null, "Room Temperature is " + roomTemperature + " degrees.\nType 'ok' to continue or 'stop' to exit:");
+
+        // Check user input
+        if (userInput != null && userInput.equalsIgnoreCase("ok")) {
+            // Ask how many minutes the door is open
+            String timeUnit = JOptionPane.showInputDialog(null, "How many minutes is the door open?\nChoose 'hours' or 'minutes':");
+
+            // Check time unit
+            if (timeUnit != null) {
+                if (timeUnit.equalsIgnoreCase("hours")) {
+                    int hours = Integer.parseInt(JOptionPane.showInputDialog(null, "Enter the number of hours (1 to 24):"));
+                    minutes = hours * 60;
+                } else if (timeUnit.equalsIgnoreCase("minutes")) {
+                    minutes = Integer.parseInt(JOptionPane.showInputDialog(null, "Enter the number of minutes (1 to 59):"));
+                }
+
+                // Calculate total temperature change
+                double temperatureChange = (0.5 * minutes) / 60.0;
+                double newTemperature = roomTemperature + temperatureChange;
+
+                // Display results
+                JOptionPane.showMessageDialog(null, "Room Temperature after " + minutes + " minutes: " + newTemperature + " degrees.");
+
+                // Ask for calculation details
+                String showCalculation = JOptionPane.showInputDialog(null, "Do you want to see the calculation details?\nType 'yes' or 'no':");
+
+                // Check user choice
+                if (showCalculation != null && showCalculation.equalsIgnoreCase("yes")) {
+                    JOptionPane.showMessageDialog(null, "Calculation:\nRoom Temperature + (0.5 * minutes) / 60.0 = New Temperature");
+                }
+
+                // Ask if user wants to stop
+                String stopCheck = JOptionPane.showInputDialog(null, "Do you want to stop using the temperature checker?\nType 'yes' or 'no':");
+
+                // Check user choice
+                if (stopCheck != null && stopCheck.equalsIgnoreCase("yes")) {
+                    System.exit(0);
+                } else {
+                    main(null); // Restart the program
+                }
+            }
+        } else {
+            System.exit(0); // Close the program if user enters 'stop'
+        }
+    }
+}
