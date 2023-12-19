@@ -1,0 +1,144 @@
+import javax.swing.JOptionPane;
+
+public class JavaTutorial {
+
+    public static void main(String[] args) {
+        showMainMenu();
+    }
+
+    // Main menu to navigate through different Java topics
+    private static void showMainMenu() {
+        String[] options = {"Java Intro", "Java Variables", "Java Methods", "Exit"};
+        int choice = JOptionPane.showOptionDialog(
+                null,
+                "Select a Java Topic:",
+                "Java Tutorial",
+                JOptionPane.DEFAULT_OPTION,
+                JOptionPane.INFORMATION_MESSAGE,
+                null,
+                options,
+                options[0]
+        );
+
+        switch (choice) {
+            case 0:
+                showJavaIntro();
+                break;
+            case 1:
+                showJavaVariables();
+                break;
+            case 2:
+                showJavaMethodsMenu();
+                break;
+            case 3:
+                System.exit(0);
+        }
+    }
+
+    // Java Intro section
+    private static void showJavaIntro() {
+        JOptionPane.showMessageDialog(
+                null,
+                "Welcome to Java Tutorial!\nThis section covers basic Java introduction."
+        );
+        showMainMenu();
+    }
+
+    // Java Variables section
+    private static void showJavaVariables() {
+        String message = "Java Variables:\n\n" +
+                "Variables are used to store data values.\n" +
+                "In Java, a variable must be declared with a data type.\n\n" +
+                "Example:\nint age = 25;";
+        JOptionPane.showMessageDialog(null, message);
+        showMainMenu();
+    }
+
+    // Java Methods section
+    private static void showJavaMethodsMenu() {
+        String[] methodOptions = {"Java Method Parameters", "Java Method Overloading", "Java Scope", "Java Recursion", "Back to Main Menu"};
+        int choice = JOptionPane.showOptionDialog(
+                null,
+                "Select a Java Methods Topic:",
+                "Java Methods",
+                JOptionPane.DEFAULT_OPTION,
+                JOptionPane.INFORMATION_MESSAGE,
+                null,
+                methodOptions,
+                methodOptions[0]
+        );
+
+        switch (choice) {
+            case 0:
+                showMethodParameters();
+                break;
+            case 1:
+                showMethodOverloading();
+                break;
+            case 2:
+                showJavaScope();
+                break;
+            case 3:
+                showJavaRecursion();
+                break;
+            case 4:
+                showMainMenu();
+        }
+    }
+
+    private static void showMethodParameters() {
+        JOptionPane.showMessageDialog(
+                null,
+                "Java Method Parameters:\n\n" +
+                        "Methods can have parameters, which are values passed to the method.\n" +
+                        "Example:\npublic void greet(String name) {\n" +
+                        "    System.out.println(\"Hello, \" + name + \"!\");\n" +
+                        "}"
+        );
+        showJavaMethodsMenu();
+    }
+
+    private static void showMethodOverloading() {
+        JOptionPane.showMessageDialog(
+                null,
+                "Java Method Overloading:\n\n" +
+                        "Method overloading allows a class to have multiple methods having the same name,\n" +
+                        "if their parameter lists are different.\n" +
+                        "Example:\npublic int add(int a, int b) {\n" +
+                        "    return a + b;\n" +
+                        "}\n" +
+                        "public double add(double a, double b) {\n" +
+                        "    return a + b;\n" +
+                        "}"
+        );
+        showJavaMethodsMenu();
+    }
+
+    private static void showJavaScope() {
+        JOptionPane.showMessageDialog(
+                null,
+                "Java Scope:\n\n" +
+                        "Scope refers to the visibility and lifetime of a variable.\n" +
+                        "Example:\npublic void exampleMethod() {\n" +
+                        "    int x = 10; // x is only accessible within this method\n" +
+                        "}"
+        );
+        showJavaMethodsMenu();
+    }
+
+    private static void showJavaRecursion() {
+        JOptionPane.showMessageDialog(
+                null,
+                "Java Recursion:\n\n" +
+                        "Recursion is a technique where a method calls itself.\n" +
+                        "Example:\npublic int factorial(int n) {\n" +
+                        "    if (n == 0 || n == 1) {\n" +
+                        "        return 1;\n" +
+                        "    } else {\n" +
+                        "        return n * factorial(n - 1);\n" +
+                        "    }\n" +
+                        "}"
+        );
+        showJavaMethodsMenu();
+    }
+}
